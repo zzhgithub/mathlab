@@ -31,6 +31,4 @@ hs_err_pid*
 .idea/misc.xml
 .idea/vcs.xml
 mathlab.iml
-src/main/resources/
-src/test/
 target/
