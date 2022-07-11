@@ -9,10 +9,11 @@ public class MatrixTest extends TestCase {
 
     @Test
     public void test() {
-        Matrix build = Matrix.build(
+        Matrix matrix = Matrix.build(
                 new double[]{1.0, 2.2},
                 new double[]{0.0, 2.5}
         );
-        System.out.println("--");
+        assert matrix != null;
+        System.out.println(matrix.dump());
     }
 }

@@ -39,6 +39,7 @@ public class Matrix implements Serializable {
 
     /**
      * 设置值
+     *
      * @param row
      * @param col
      * @param value
@@ -49,6 +50,7 @@ public class Matrix implements Serializable {
 
     /**
      * 获取值
+     *
      * @param row
      * @param col
      * @return
@@ -61,5 +63,20 @@ public class Matrix implements Serializable {
             }
         }
         return null;
+    }
+
+
+    public String dump() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("[\n");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int i1 = 0; i1 < matrix[i].length; i1++) {
+                builder.append(get(i, i1));
+                builder.append("\t");
+            }
+            builder.append("\n");
+        }
+        builder.append("]\n");
+        return builder.toString();
     }
 }
