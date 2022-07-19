@@ -11,6 +11,14 @@ public class Matrix implements Serializable {
 
     double[][] matrix;
 
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
     public Matrix(int row, int col) {
         this.row = row;
         this.col = col;
@@ -71,8 +79,8 @@ public class Matrix implements Serializable {
         builder.append("[\n");
         for (int i = 0; i < matrix.length; i++) {
             for (int i1 = 0; i1 < matrix[i].length; i1++) {
-                builder.append(get(i, i1));
                 builder.append("\t");
+                builder.append(get(i, i1));
             }
             builder.append("\n");
         }
