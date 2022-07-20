@@ -99,4 +99,21 @@ public class MatrixUtils {
         );
     }
 
+
+    public static Matrix rotateXZ(double theta) {
+        return Matrix.build(
+                new double[]{FastMath.cos(theta), 0, FastMath.sin(theta)},
+                new double[]{0, 1, 0},
+                new double[]{-FastMath.sin(theta), 0, FastMath.cos(theta)}
+        );
+    }
+
+
+    public static Matrix rotateXY(double theta) {
+        return Matrix.build(
+                new double[]{FastMath.cos(theta), -FastMath.sin(theta), 0},
+                new double[]{FastMath.sin(theta), FastMath.cos(theta), 0},
+                new double[]{0, 0, 1}
+        );
+    }
 }

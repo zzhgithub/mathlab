@@ -2,6 +2,7 @@ package org.zzh.mathlab.utils;
 
 
 import org.apache.commons.math3.util.FastMath;
+import org.zzh.mathlab.tools.Matrix;
 import org.zzh.mathlab.tools.Point3D;
 import org.zzh.mathlab.tools.Vector3D;
 
@@ -95,5 +96,22 @@ public class Vector3DUtils {
      */
     public static double angle(Vector3D a, Vector3D b) {
         return FastMath.acos(cosOf(a, b));
+    }
+
+    /**
+     * 向量空间旋转
+     *
+     * @param a
+     * @param x 绕x轴
+     * @param y 绕y轴
+     * @param z 绕z轴
+     * @return
+     */
+    public static Vector3D rotate(Vector3D a, double x, double y, double z) {
+        Matrix matrix = a.toMatrix();
+        Matrix multi = MatrixUtils.multi(
+                MatrixUtils.multi(
+                        MatrixUtils.multi(matrix, MatrixUtils.rotateYZ(x)), MatrixUtils.rotateXZ(y)), MatrixUtils.rotateXY(z));
+        return MatrixUtils.toVector(multi);
     }
 }
