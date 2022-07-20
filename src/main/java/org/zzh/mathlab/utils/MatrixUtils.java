@@ -1,6 +1,8 @@
 package org.zzh.mathlab.utils;
 
+import org.apache.commons.math3.util.FastMath;
 import org.zzh.mathlab.tools.Matrix;
+import org.zzh.mathlab.tools.Vector3D;
 
 import static org.zzh.mathlab.exception.ErrorConstant.MATRIX_SHAPE_NOT_MATCH;
 
@@ -67,4 +69,34 @@ public class MatrixUtils {
         }
         return ret;
     }
+
+    /**
+     * 矩阵转向量
+     *
+     * @param matrix
+     * @return
+     */
+    public static Vector3D toVector(Matrix matrix) {
+        if (matrix.getRow() != 1 || matrix.getCol() != 3) {
+            throw MATRIX_SHAPE_NOT_MATCH;
+        }
+        return new Vector3D(matrix.get(0, 0),
+                matrix.get(0, 1),
+                matrix.get(0, 2));
+    }
+
+    /**
+     * yz 平面顺时针旋转矩阵
+     *
+     * @param theta 弧度制角度
+     * @return
+     */
+    public static Matrix rotateYZ(double theta) {
+        return Matrix.build(
+                new double[]{1, 0, 0},
+                new double[]{0, FastMath.cos(theta), -FastMath.sin(theta)},
+                new double[]{0, FastMath.sin(theta), FastMath.cos(theta)}
+        );
+    }
+
 }

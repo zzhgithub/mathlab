@@ -6,6 +6,7 @@ public class Vector3D extends Point3D {
 
     public final static Vector3D O = new Vector3D(0.0, 0.0, 0.0);
 
+    // 单位方向向量
     public final static Vector3D xAxis = new Vector3D(1.0, 0.0, 0.0);
     public final static Vector3D yAxis = new Vector3D(0.0, 1.0, 0.0);
     public final static Vector3D zAxis = new Vector3D(0.0, 0.0, 1.0);
@@ -21,5 +22,9 @@ public class Vector3D extends Point3D {
      */
     public Double measure() {
         return Point3DUtils.distance(Point3D.O, this);
+    }
+
+    public Matrix toMatrix() {
+        return Matrix.build(new double[]{this.x, this.y, this.h});
     }
 }
